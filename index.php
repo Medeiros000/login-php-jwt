@@ -136,13 +136,13 @@ include_once 'h-functions.php';
             $user = '';
             if (isset($data['user'])) {
                 $user = $data['user'];
-            } else {
+            } else { // Delete else to use empty user
                 $user = 'jr@login.com';
             }
             $password = '';
             if (isset($data['password'])) {
                 $password = $data['password'];
-            } else {
+            } else { // Delete else to use empty password
                 $password = 'BAa1rQAnaDm8tLP';
             }
             ?>
