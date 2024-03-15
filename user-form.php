@@ -20,19 +20,21 @@ include_once 'h-functions.php';
   echo header_html();
 
   $data = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+
+  // For tests only
   $user = '';
   $email = '';
   $password = '';
-  if (isset($data)) {
-    var_dump($data);
-    $user = $data['name'];
-    $email = $data['email'];
-    $password = $data['password'];
-  } else {
-    $user = 'teste';
-    $email = 'teste@teste.com';
-    $password = 'Testesenha123#';
-  }
+  // if (isset($data)) {
+  //   var_dump($data);
+  //   $user = $data['name'];
+  //   $email = $data['email'];
+  //   $password = $data['password'];
+  // } else {
+  //   $user = 'teste';
+  //   $email = 'teste@teste.com';
+  //   $password = 'Testesenha123#';
+  // }
 
   ?>
   <form class="m-3 pt-2 col-10 col-md-4 col-lg-3 mx-auto" method="post">
@@ -76,7 +78,7 @@ include_once 'h-functions.php';
 
     <!-- Submit button -->
     <div class="text-center">
-      <button id="submit" class="btn btn-primary w-75 mx-auto py-2 disabled" type="submit">Sign in</button>
+      <button id="submit" class="btn btn-primary w-75 mx-auto py-2 disabled" type="submit">Sign on</button>
     </div>
   </form>
 
