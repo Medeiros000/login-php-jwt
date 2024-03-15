@@ -22,6 +22,7 @@ include_once 'h-functions.php';
   $data = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
   // For tests only
+  // Delete it to use empty
   $user = '';
   $email = '';
   $password = '';
@@ -42,7 +43,7 @@ include_once 'h-functions.php';
 
     <!-- Name input with validation -->
     <div class="form-floating mb-3">
-      <input type="text" class="form-control" name="name" id="usernameInput" placeholder="name@example.com" value="<?php echo $user ?>">
+      <input type="text" class="form-control" name="name" id="usernameInput" placeholder="name@example.com" value="<?php echo $user // Delete?>">
       <label for="floatingInput">Name</label>
 
       <!-- Check Name -->
@@ -51,7 +52,7 @@ include_once 'h-functions.php';
 
     <!-- Email input with validation -->
     <div class="form-floating mb-3">
-      <input type="email" class="form-control" name="email" id="emailInput" placeholder="name@example.com" value="<?php echo $email ?>">
+      <input type="email" class="form-control" name="email" id="emailInput" placeholder="name@example.com" value="<?php echo $email // Delete?>">
       <label for="floatingInput">Email address</label>
 
       <!-- Check Email -->

@@ -133,27 +133,28 @@ include_once 'h-functions.php';
                 // Destroy $SESSION['msg']
                 unset($_SESSION['msg']);
             }
+            
+            // For tests only
+            // Delete it to use empty
             $user = '';
-            if (isset($data['user'])) {
-                $user = $data['user'];
-            } else { // Delete else to use empty user
-                $user = 'jr@login.com';
-            }
             $password = '';
-            if (isset($data['password'])) {
+            if (isset($data)) {
+                $user = $data['user'];
                 $password = $data['password'];
-            } else { // Delete else to use empty password
+            } else { 
+                $user = 'jr@login.com';
                 $password = 'BAa1rQAnaDm8tLP';
-            }
+            }            
+           
             ?>
 
 
             <div class="form-floating">
-                <input type="email" name="user" class="form-control" id="floatingInput" placeholder value="<?php echo $user ?>" required>
+                <input type="email" name="user" class="form-control" id="floatingInput" placeholder value="<?php echo $user // Delete?>" required>
                 <label for="floatingInput">Email address</label>
             </div>
             <div class="form-floating">
-                <input type="password" name="password" class="form-control" id="floatingPassword" placeholder value="<?php echo $password ?>" autocomplete=off required>
+                <input type="password" name="password" class="form-control" id="floatingPassword" placeholder value="<?php echo $password // Delete?>" autocomplete=off required>
                 <label for="floatingPassword">Password</label>
             </div>
 
