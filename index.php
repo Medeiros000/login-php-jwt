@@ -15,7 +15,7 @@ include_once 'h-functions.php';
 
 <head>
     <?php echo head_html(); ?>
-    <title>Login with JWT token</title>
+    <title>Sign in</title>
 </head>
 
 <body>
@@ -164,8 +164,10 @@ include_once 'h-functions.php';
                 </label>
             </div>
             <div class="text-center">
-                <button class="btn btn-primary w-50 py-2" type="submit">Sign in</button>
-            </div>            
+                <button class="btn btn-primary w-75 py-2" type="submit">Sign in</button>
+                <p>Don't have an account? <a class="text-decoration-none" href="user-form.php">Register</a></p>
+            </div>   
+
         </form>
     </main>
     <p class="position-absolute bottom-0 end-0 me-3 text-body-secondary">©Jr-2024</p>
