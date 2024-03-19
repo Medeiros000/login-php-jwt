@@ -5,15 +5,16 @@ session_start();
 // Clean redirect buffer
 ob_start();
 
+include_once 'h-functions.php';
 // Delet cookie
 setcookie('token');
 
 // Message to user
 if (isset($_COOKIE['token'])) {
     setcookie('token');
-    $_SESSION['msg'] = "<div id='fade-out' class='alert alert-success text-center' role='alert'>You have been logged out...</div>";
+    $_SESSION['msg'] = h_alert('You have been logged out...', 'success');
 } else {
-    $_SESSION['msg'] = "<div id='fade-out' class='alert alert-danger text-center' role='alert'>You are not logged in...</div>";
+    $_SESSION['msg'] = h_alert('You are not logged in...');
 }
 
 // Redirect to index

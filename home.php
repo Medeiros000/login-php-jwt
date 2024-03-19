@@ -14,18 +14,17 @@ include_once 'h-functions.php';
 token();
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <?php echo head_html(); ?>
-  <title>Home</title>
-</head>
+<?php echo h_head('Home'); ?>
 
 <body>
-  <?php echo header_html(get_name()); ?>
+
+  <?php
+  echo h_header(get_name());
+  echo footer_theme();
+  ?>
+
   <div class="p-3 mx-auto mt-4">
-    <main class="p-3 bg-success border rounded ">
+    <main class="p-3 w-75 mx-auto bg-success border rounded ">
       <h1>Welcome, <?php echo get_name(); ?>!</h1>
       <p>email: <?php echo get_user(); ?></p>
       <p class="lead">Welcome to our website! Explore and make yourself at home. May your journey with us be enriching.</p>
@@ -35,9 +34,7 @@ token();
     </main>
   </div>
 
-  <?php echo '<script>console.log("Token: [' . $_COOKIE['token'] . ']")</script>'; ?>
-  <p class="position-absolute bottom-0 end-0 me-3 text-body-secondary">©Jr-2024</p>
-  <script src="script.js"></script>
+  <?php echo script(); ?>
 </body>
 
 </html>

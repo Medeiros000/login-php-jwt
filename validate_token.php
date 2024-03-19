@@ -3,102 +3,62 @@
 // Function to check if token is valid
 function validate_token()
 {
-    // echo 'Token Validated!';
     $token = $_COOKIE['token'];
 
     // Split token
     $token = explode('.', $token);
 
     // Verify if token has 3 parts
-    if (count($token) == 3) {
-        // Get header
-        $header = $token[0];
-        // Get payload
-        $payload = $token[1];
-        // Get signature
-        $signature = $token[2];
-
-        // Secret key
-        $secret_key = 'F6F1F37584D8189';
-
-        // Use header and payload to code the algorithm sha256
-        $validated_signature = hash_hmac('sha256', "$header.$payload", $secret_key, true);
-
-        // Encode to base64
-        $validated_signature = base64_encode($validated_signature);
-
-        // Verify if signature is valid
-        if ($signature == $validated_signature) {
-
-            // decode payload
-            $data_token = base64_decode($payload);
-            // Convert to array
-            $data_token = json_decode($data_token, true);
-
-            // Verify if token is expired
-            if ($data_token['exp'] > time()) {
-
-                // Token is valid and not expired so return true
-                return true;
-            } else {
-
-                // Message to user
-                $_SESSION['msg_token'] = "<div id='fade-out' class='alert alert-danger text-center' role='alert'>Invalid or expired session token...</div>";
-                
-                // Delet cookie
-                setcookie('token');
-
-                return false;
-            }
-
-            // Return true
-            return true;
-        } else {
-
-            // Message to user
-            $_SESSION['msg_token'] = "<div id='fade-out' class='alert alert-danger text-center' role='alert'>Invalid or expired session token...</div>";
-            return false;
-        }
+    if (count($token) != 3) {
+        return false;
     }
-}
 
-// Retreive name from token
-function get_name()
-{
-    $token = $_COOKIE['token'];
+    // Get header, payload, and signature
+    [$header, $payload, $signature] = $token;
 
-    // Split token
-    $token = explode('.', $token);
+    // Secret key
+    $secret_key = 'F6F1F37584D8189';
 
-    // Get payload
-    $payload = $token[1];
+    // Use header and payload to compute the signature
+    $computed_signature = hash_hmac('sha256', "$header.$payload", $secret_key, true);
+    $computed_signature = base64_encode($computed_signature);
 
-    // decode payload
+    // Verify if signature is valid
+    if ($signature !== $computed_signature) {
+        $_SESSION['msg_token'] = h_alert('Invalid or expired token...');
+        return false;
+    }
+
+    // Decode payload
     $data_token = base64_decode($payload);
 
     // Convert to array
     $data_token = json_decode($data_token, true);
 
+    // Verify if token is expired
+    if ($data_token['exp'] <= time()) {
+        $_SESSION['msg_token'] = h_alert('Invalid or expired token...');
+        setcookie('token');
+        return false;
+    }
+
+    // Token is valid and not expired
+    return true;
+}
+
+// Retrieve name from token
+function get_name()
+{
+    $payload = explode('.', $_COOKIE['token'])[1];
+    $data_token = json_decode(base64_decode($payload), true);
     return ucfirst($data_token['name']);
 }
 
-// Retreive email from token
+// Retrieve email from token
 function get_user()
 {
-    $token = $_COOKIE['token'];
-
-    // Split token
-    $token = explode('.', $token);
-
-    // Get payload
-    $payload = $token[1];
-
-    // decode payload
-    $data_token = base64_decode($payload);
-
-    // Convert to array
-    $data_token = json_decode($data_token, true);
-
+    $payload = explode('.', $_COOKIE['token'])[1];
+    $data_token = json_decode(base64_decode($payload), true);
     return $data_token['user'];
 }
 
@@ -110,13 +70,10 @@ function token()
             $_SESSION['msg'] = $_SESSION['msg_token'];
             unset($_SESSION['msg_token']);
         } else {
-            $_SESSION['msg'] = "<div id='fade-out' class='alert alert-danger text-center' role='alert'>
-          You must log in to access this page.</div>";
+            $_SESSION['msg'] = h_alert('You must log in first.');
         }
         // Redirect to index
         header('Location: index.php');
-        // Kill the script
-        var_dump('Token valid!');
         exit();
     }
 }
