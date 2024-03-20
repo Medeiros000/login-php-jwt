@@ -19,14 +19,17 @@ token();
 <body>
 
   <?php
-  echo h_header(get_name());
-  echo footer_theme();
+  echo h_header(get_name());  
   ?>
 
   <div class="cover-container d-flex w-100 p-3 mx-auto mt-4 flex-column">
     <h1 class="text-center">Features</h1>
   </div>
-  <?php echo script(); ?>
+
+  <?php 
+  echo footer_theme();  
+  echo script(); 
+  ?>
 </body>
 
 </html>

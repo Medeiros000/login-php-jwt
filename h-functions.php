@@ -1,10 +1,15 @@
 <?php
 
-function h_head(string $title)
+function h_head(string $title, string $content = null)
 {
+  if (isset($_SESSION['theme'])) {
+    $theme = $_SESSION['theme'];
+  } else {
+    $theme = 'light';
+  }
   return '
       <!DOCTYPE html>
-      <html lang="en">
+      <html lang="en" data-bs-theme="' . $theme . '">
       <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +17,8 @@ function h_head(string $title)
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">            
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        ' . $content . '         
         <title>' . $title . '</title>
       </head>
         ';
@@ -42,7 +48,7 @@ function footer_theme()
 {
   return '
       <span class="position-fixed bottom-0 end-0 me-3 text-body-secondary">
-          ©Jr-'.date('Y').'
+          ©Jr-' . date('Y') . '
           <button id="theme" class="btn " type="button">🌓</button>
       </span>
         ';
@@ -73,4 +79,14 @@ function h_alert(string $msg, string $type = 'danger')
         </div>
       </div>
           ';
+}
+
+function h_css(string $path)
+{
+  return '<link rel="stylesheet" href="' . $path . '">';
+}
+
+function h_js(string $path)
+{
+  return '<script src="' . $path . '"></script>';
 }

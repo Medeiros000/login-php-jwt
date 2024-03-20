@@ -20,7 +20,6 @@ token();
 
   <?php
   echo h_header(get_name());
-  echo footer_theme();
   ?>
 
   <div class="p-3 mx-auto mt-4">
@@ -34,7 +33,10 @@ token();
     </main>
   </div>
 
-  <?php echo script(); ?>
+  <?php
+  echo footer_theme();
+  echo script();
+  ?>
 </body>
 
 </html>

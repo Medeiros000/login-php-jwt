@@ -62,8 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
-<?php echo h_head('Sign in'); ?>
-<link rel="stylesheet" href="style.css">
+<?php echo h_head('Sign in', h_css('style.css')); ?>
 
 <body>
   <?php
@@ -112,8 +111,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       </div>
     </form>
   </main>
-  <p class="position-fixed bottom-0 end-0 me-3 text-body-secondary">©Jr-2024<button id="theme" class="btn " type="button">🌓</button></p>
-  <?php echo script(); ?>
+
+  <?php
+  echo footer_theme();
+  echo script();
+  ?>
 </body>
 
 </html>

@@ -66,14 +66,12 @@ if (isset($data)) {
 
 ?>
 
-<?php echo h_head('Sign On'); ?>
-<link rel="stylesheet" href="style.css">
+<?php echo h_head('Sign On', h_css('style.css')); ?>
 
 <body>
 
   <?php
   echo h_header();
-  echo footer_theme();
   ?>
 
   <form class="m-3 py-2 pb-5 col-10 col-md-4 col-lg-3 mx-auto" method="post">
@@ -149,8 +147,11 @@ if (isset($data)) {
   </form>
 
   <!-- Footer -->
+  <?php
+  echo footer_theme();
+  echo script();
+  ?>
   <script src="form-script.js"></script>
-  <?php echo script(); ?>
 </body>
 
 </html>
