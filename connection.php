@@ -6,6 +6,7 @@ if ($_SERVER['SERVER_NAME'] == 'localhost') {
     $password = "";
     $dbname = "login";
 } else {
+    // Implement the config.php file in the root directory
     require_once 'config.php';
     $servername = $config_servername;
     $username = $config_username;
