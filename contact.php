@@ -19,16 +19,16 @@ token();
 <body>
 
   <?php
-  echo h_header(get_name());  
+  echo h_header(get_name());
   ?>
 
   <div class="cover-container d-flex w-100 p-3 mx-auto mt-4 flex-column">
     <h1 class="text-center">Contact</h1>
   </div>
-  
-  <?php 
+
+  <?php
   echo footer_theme();
-  echo script(); 
+  echo script();
   ?>
 </body>
 

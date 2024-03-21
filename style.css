@@ -1,8 +1,12 @@
 .btn-group p {
-    font-size: 0.6rem;
+	font-size: 0.6rem;
 }
 
-#nameInput:focus, #emailInput:focus, #passwordInput:focus, #floatingInput, #floatingPassword {
-    /* border-color: white; */
-    box-shadow: 0 0 0 0;
+#nameInput:focus,
+#emailInput:focus,
+#passwordInput:focus,
+#floatingInput,
+#floatingPassword {
+	/* border-color: white; */
+	box-shadow: 0 0 0 0;
 }

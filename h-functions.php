@@ -1,13 +1,15 @@
 <?php
+include_once 'logs.php';
 
 function h_head(string $title, string $content = null)
 {
-  if (isset($_SESSION['theme'])) {
-    $theme = $_SESSION['theme'];
-  } else {
-    $theme = 'light';
-  }
-  return '
+	if (isset($_SESSION['theme'])) {
+		$theme = $_SESSION['theme'];
+	} else {
+		$theme = 'light';
+	}
+
+	return '
       <!DOCTYPE html>
       <html lang="en" data-bs-theme="' . $theme . '">
       <head>
@@ -25,7 +27,7 @@ function h_head(string $title, string $content = null)
 }
 function h_header(string $name = 'Guest')
 {
-  return '
+	return '
       <div class="cover-container d-flex w-100 p-3 mx-auto mt-4 flex-column">
         <header class="mb-auto bg-secondary p-2 border border-5 rounded">
           <div>
@@ -46,7 +48,7 @@ function h_header(string $name = 'Guest')
 // Button to change theme
 function footer_theme()
 {
-  return '
+	return '
       <span class="position-fixed bottom-0 end-0 me-3 text-body-secondary">
           ©Jr-' . date('Y') . '
           <button id="theme" class="btn " type="button">🌓</button>
@@ -57,22 +59,22 @@ function footer_theme()
 // Script function
 function script()
 {
-  return '<script src="script.js"></script>';
+	return '<script src="script.js"></script>';
 }
 
 
-/**s
+/**
  * Function to create a alert message
  * 
  * @param string $msg
- * @param string $type it'll return a message with danger color 
+ * @param string $type It'll return a message with danger color 
  * and success will return a message with success color for example
  * @return string html
  * @template echo h_alert('This is a alert message', 'success');
  */
 function h_alert(string $msg, string $type = 'danger')
 {
-  return  '
+	return  '
       <div style="width: 15rem;" id="fade-out" class="toast z-3 show position-absolute start-50 translate-middle bg-' . $type . '">
         <div class="toast-body d-flex justify-content-between">
           <p class="d-inline my-auto fw-semibold">' . $msg . '</p><button type="button" class="btn-close d-inline my-auto" data-bs-dismiss="toast"></button>
@@ -83,10 +85,10 @@ function h_alert(string $msg, string $type = 'danger')
 
 function h_css(string $path)
 {
-  return '<link rel="stylesheet" href="' . $path . '">';
+	return '<link rel="stylesheet" href="' . $path . '">';
 }
 
 function h_js(string $path)
 {
-  return '<script src="' . $path . '"></script>';
+	return '<script src="' . $path . '"></script>';
 }
