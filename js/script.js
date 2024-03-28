@@ -1,11 +1,10 @@
 $().ready(function () {
-	console.log('script.js is ready!');
 
 	let getStoredTheme = () => localStorage.getItem('theme');
 	let setStoredTheme = (theme) => localStorage.setItem('theme', theme);
 	let theme = (theme_selected) => {
 		$.ajax({
-			url: 'theme.php',
+			url: 'helpers/theme.php',
 			method: 'POST',
 			data: {
 				theme: theme_selected
@@ -18,6 +17,14 @@ $().ready(function () {
 			}
 		});
 	};
+	let toggleElement = (elem_eye, elem_input) => $(elem_eye).on('click', function () {
+		$(elem_eye).toggleClass('bi-eye-slash').toggleClass('bi-eye');
+		$(elem_input).attr('type') === 'password' ? $(elem_input).attr('type', 'text') : $(elem_input).attr('type', 'password');
+	});
+	toggleElement('#togglePassword', '#passwordInput');
+	toggleElement('#togglePasswordLogin', '#floatingPassword');
+	toggleElement('#togglePasswordReset', '#floatingPassword');
+	toggleElement('#toggleConfirmPasswordReset', '#floatingConfirmPassword');
 
 	removeDiv('#fade-out', 5);
 

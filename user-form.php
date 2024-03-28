@@ -6,9 +6,9 @@ ob_start();
 
 // Includes validate_token.php file to verify if token is valid
 // and h-functions.php file to get tag functions
-include_once 'validate_token.php';
-include_once 'h-functions.php';
-include_once 'connection.php';
+include_once 'helpers/validate_token.php';
+include_once 'helpers/h-functions.php';
+include_once 'helpers/connection.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	$data = filter_input_array(INPUT_POST, FILTER_DEFAULT);
@@ -66,7 +66,7 @@ if (isset($data)) {
 
 ?>
 
-<?php echo h_head('Sign On', h_css('style.css')); ?>
+<?php echo h_head('Sign On', h_css('css/style.css')); ?>
 
 <body>
 
@@ -122,6 +122,7 @@ if (isset($data)) {
 		<!-- Password input with validation -->
 		<div class="form-floating mb-1">
 			<input type="password" class="form-control" name="password" id="passwordInput" placeholder="Password" autocomplete=off value="<?php echo $password; ?>">
+			<i class="bi bi-eye-slash p-3 me-3 position-absolute top-50 end-0 translate-middle-y" id="togglePassword"></i>
 			<label for="floatingPassword">Password</label>
 
 			<!-- Check Password -->
@@ -149,9 +150,10 @@ if (isset($data)) {
 	<!-- Footer -->
 	<?php
 	echo footer_theme();
-	echo script();
+	// echo script();
 	?>
-	<script src="form-script.js"></script>
+	<script src="js/script.js"></script>
+	<script src="js/form-script.js"></script>
 </body>
 
 </html>

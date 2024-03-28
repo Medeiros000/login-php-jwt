@@ -1,5 +1,9 @@
 $(document).ready(function () {
-	console.log('form-script.js is ready!');
+
+	// Prevent form submission
+	$('#form').on('submit', function (e) {
+		e.preventDefault();
+	});
 
 	// Name onclick
 	// Name a-z onclick
@@ -18,7 +22,6 @@ $(document).ready(function () {
 	// Check if the username is valid
 	$('#nameInput').on('input', function () {
 		check_username = $(this).val();
-		// console.log(check_username);
 
 		// Final check for username
 		!check_username.match(/^[a-zA-Z0-9]{5,}$/) ? $('#u-x').remove() & $('#u-v').remove() & $('#u-check').append('<i id="u-x" class="bi bi-x-circle-fill text-danger"></i>') & releaseButton() : $('#u-x').remove() & $('#u-v').remove() & $('#u-check').append('<i id="u-v" class="bi bi-check-circle-fill text-success"></i>') & releaseButton();
@@ -38,7 +41,7 @@ $(document).ready(function () {
 		$('#emailInput').val('').val(check_email.toLowerCase());
 
 		// Final check for email
-		check_email.match(/[-a-z0-9_][@]{1}[-a-z0-9]{1,}[.]{1}[-a-z0-9]/) ?
+		check_email.match(/[-a-z0-9_]{1,}[@]{1}[-a-z0-9]{1,}[.]{1}[-a-z0-9]/) ?
 			$('#e-x').remove() & $('#e-v').remove() & $('#e-check').append('<i id="e-v" class="bi bi-check-circle-fill text-success"></i>') & releaseButton()
 			:
 			$('#e-x').remove() & $('#e-v').remove() & $('#e-check').append('<i id="e-x" class="bi bi-x-circle-fill text-danger"></i>') & releaseButton();

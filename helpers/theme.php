@@ -12,6 +12,4 @@ $response = array(
 );
 
 echo json_encode($response);
-
-write_logs(__FILE__ . __LINE__ . json_encode($response));
 ?>

@@ -3,11 +3,7 @@ include_once 'logs.php';
 
 function h_head(string $title, string $content = null)
 {
-	if (isset($_SESSION['theme'])) {
-		$theme = $_SESSION['theme'];
-	} else {
-		$theme = 'light';
-	}
+	$theme = isset($_SESSION['theme']) ? $_SESSION['theme'] : 'light';
 
 	return '
       <!DOCTYPE html>
@@ -27,16 +23,17 @@ function h_head(string $title, string $content = null)
 }
 function h_header(string $name = 'Guest')
 {
+	$page = isset($_COOKIE['token']) ? 'Logout' : 'Login';
 	return '
       <div class="cover-container d-flex w-100 p-3 mx-auto mt-4 flex-column">
         <header class="mb-auto bg-secondary p-2 border border-5 rounded">
           <div>
             <h3 class="float-md-start mb-0">Dashboard ' . $name . '</h3>
             <nav class="nav nav-masthead justify-content-center float-md-end">
-              <a class="nav-link fw-bold text-white py-1 px-1 active" aria-current="page" href="home.php">Home</a>
+              <a class="nav-link fw-bold text-white py-1 px-1 active" aria-current="page" href="index.php">Home</a>
               <a class="nav-link fw-bold text-white py-1 px-1" href="features.php">Features</a>
               <a class="nav-link fw-bold text-white py-1 px-1" href="contact.php">Contact</a>
-              <a class="nav-link fw-bold text-white py-1 px-1" href="logout.php">Logout</a>
+              <a class="nav-link fw-bold text-white py-1 px-1" href="' . strtolower($page) . '.php">' . $page . '</a>
             </nav>
           </div>
         </header>
@@ -59,7 +56,7 @@ function footer_theme()
 // Script function
 function script()
 {
-	return '<script src="script.js"></script>';
+	return '<script src="js/script.js"></script>';
 }
 
 
