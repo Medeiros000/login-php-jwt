@@ -7,8 +7,8 @@ ob_start();
 
 // Includes validate_token.php file to verify if token is valid
 // and h-functions.php file to get tag functions
-include_once 'helpers/validate_token.php';
-include_once 'helpers/h-functions.php';
+include_once __DIR__.'/helpers/validate_token.php';
+include_once __DIR__.'/helpers/h-functions.php';
 
 ?>
 
