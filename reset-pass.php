@@ -39,7 +39,7 @@ require_once 'helpers/connection.php';
 
 		// Execute query
 		$stmt_user->execute();
-
+		write_logs($_SERVER['SERVER_NAME']);
 		if (($stmt_user) && ($stmt_user->rowCount() > 0)) {
 			$row_user = $stmt_user->fetch(PDO::FETCH_ASSOC);
 			$_SESSION['msg'] = h_alert('Check your email.');
@@ -48,6 +48,8 @@ require_once 'helpers/connection.php';
 			$_SESSION['email'] = $row_user['email'];
 			unset($data); // Clear the variable for security reasons
 			header('Location: reset-link.php');
+		} else {
+			$_SESSION['msg'] = h_alert('Email not found.');
 		}
 	}
 	?>

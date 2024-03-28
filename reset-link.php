@@ -44,6 +44,9 @@ require_once 'helpers/connection.php';
 					// Prepare query
 					$stmt_user = $conn->prepare($query);
 
+					// Hash password
+					$data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+
 					// Bind parameters
 					$stmt_user->bindParam(':email', $_SESSION['email']);
 					$stmt_user->bindParam(':password', $data['password']);
