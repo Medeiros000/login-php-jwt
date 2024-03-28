@@ -1,0 +1,8 @@
+[2024-03-28 00:04:52]-[file: C:\xampp\htdocs\login\api\reset-link.php | line: 33]-[Guest]-[null]
+
+[2024-03-28 00:05:02]-[file: C:\xampp\htdocs\login\api\reset-link.php | line: 33]-[Guest]-[null]
+
+[2024-03-28 00:15:15]-[file: C:\xampp\htdocs\login\api\login.php | line: 54]-[Guest]-[jr logged in.]
+
+[2024-03-28 00:15:21]-[file: C:\xampp\htdocs\login\api\logout.php | line: 13]-[Jr]-[Jr logged out.]
+
